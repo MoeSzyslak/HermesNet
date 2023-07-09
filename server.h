@@ -15,7 +15,11 @@ public:
     void start();
     void stop();
 
+    void setPort(int port);
+
 private:
+    int m_port;
+
     std::vector<Client*> connectedClients;
     std::mutex connectedClientsMutex;
     std::atomic<bool> isRunning;

@@ -18,6 +18,11 @@ Server::~Server()
     stop();
 }
 
+void Server::setPort(int port)
+{
+    this->m_port = port;
+}
+
 void Server::start()
 {
     isRunning = true;
@@ -34,7 +39,7 @@ void Server::start()
     sockaddr_in serverAddress{};
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_addr.s_addr = INADDR_ANY;
-    serverAddress.sin_port = htons(PORT);
+    serverAddress.sin_port = htons(m_port);
 
     //Bind the socket to the specified address and port
     if (bind(serverSocket, reinterpret_cast<sockaddr*>(&serverAddress), sizeof(serverAddress)) == -1)
@@ -52,7 +57,7 @@ void Server::start()
         return;
     }
 
-    std::cout << "Server started on port " << PORT << std::endl;
+    std::cout << "Server started on port " << m_port << std::endl;
 
     //Accept incoming connections and spawn threads to handle clients
     while (isRunning)
