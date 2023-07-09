@@ -22,7 +22,7 @@ To compile the TCP server, follow these steps:
 To run the TCP server, follow these steps:
 
     Make sure the server has been successfully compiled as explained in the compilation steps.
-    From the build directory, run the server executable: ./server
+    From the build directory, run the server executable: ./server <port>
     The server will start and display a message indicating the port it is listening on.
 
 ## Testing the Server
